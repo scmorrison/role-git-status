@@ -1,0 +1,10 @@
+---
+- name: Check status of repository
+  command: git status
+  args:
+    chdir: "{{ web_root }}"
+  sudo: yes
+  sudo_user: "{{ system_user }}"
+  register: git_status
+
+- debug: var=git_status.stdout.split('\n')
